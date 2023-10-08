@@ -1,20 +1,44 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
+  <ion-toolbar color="primary">
     <ion-title>
-      Blank
+      Convert Currency
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col size="4" offset="4">
+        <img src="/CurrencyApp/src/assets/convert.jpg">
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+      </ion-col>
+
+    </ion-row>
+  </ion-grid>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Edit Currencies</ion-card-title>
+    </ion-card-header>
+  <ion-card-content>
+    <ion-item>
+      <ion-label position="fixed">Currency 1</ion-label>
+      <ion-select value="usd" disabled>
+        <ion-select-option value="usd">USD</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="fixed">Currency 2</ion-label>
+      <ion-select #c2 (ionChange)="onChange(c2.value)">
+        <ion-select-option *ngFor="let c of tab" [value]="c"> {{ c }}</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <!-- <ion-button (click)="onConvert()" color="success">Convert</ion-button> -->
+  </ion-card-content>
+  </ion-card>
+
+  <ion-label $ngIf="msg.length">{{ msg }}</ion-label>
 </ion-content>
